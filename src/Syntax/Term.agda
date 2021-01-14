@@ -28,6 +28,9 @@ substTerm : {{SyntaxKit T}} → Term Δ σ → Subst T Γ Δ → Term Γ σ
 substTerm (vT v)     s = term (v [ s ])
 substTerm (λT t)     s = λT (substTerm t (s ⁺⁺ _))
 substTerm (∘T t₁ t₂) s = ∘T (substTerm t₁ s) (substTerm t₂ s)
+substTerm (×T t₁ t₂) s = ×T (substTerm t₁ s) (substTerm t₂ s)
+substTerm (proj₁ p)  s = proj₁ (substTerm p s)
+substTerm (proj₂ p)  s = proj₂ (substTerm p s)
 
 weakTerm : Term Γ σ → (τ : Ty) → Term (Γ , τ) σ
 weakTerm tm τ = substTerm tm (idS ⁺ τ)

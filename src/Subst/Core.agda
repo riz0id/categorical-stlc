@@ -59,7 +59,6 @@ record SubstKit (T : Con → Ty → Set) : Set where
 
 open SubstKit {{ ... }} public
 
-
 --------------------------------------------------------------------------------
 -- Operations
 
@@ -101,7 +100,6 @@ idS_* Γ = idS {_} {Γ}
 -- Variant of the identity substitution with an explicit context and prototype.
 idS_∣_* : (T : Con → Ty → Set) → {{SyntaxKit T}} → (Γ : Con) → Subst T Γ Γ
 idS_∣_* T Γ = idS {T} {Γ}
-
 
 
 --------------------------------------------------------------------------------
